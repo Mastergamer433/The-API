@@ -1,9 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const config = require('../config.json');
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const {clientId, clientSecret, redirectUri} = config.discord;
-import express, {Request, Response} from 'express';
-import axios from 'axios';
-import url from 'url';
+import express from 'express';
 import routes from './routes';
 
 const port = config.api.port || 4000;
@@ -13,12 +12,10 @@ async function main() {
 	const app = express();
 	app.use('/',routes);
 	app.listen(port, ()=>console.log('Running on port '+port));
+
 }
 
 main();
-
-const accessToken = '';
-const refreshToken = '';
 
 // app.get('/oauth2/discord/redirect', async (req: Request, res: Response) => {
 //     const {code}=req.query;
